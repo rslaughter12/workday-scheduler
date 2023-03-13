@@ -1,8 +1,8 @@
 $(document).ready(function () {
   //get the date with Moment
-  console.log(moment().format("dddd, MMMM Do"));
+  console.log(moment().format('LLLL'));
   //put the date on the page
-  $("#currentDay").text(moment().format("dddd, MMMM Do"));
+  $("#currentDay").text(moment().format('LLLL'));
 
   //get current hour
   var currentHour = moment().hours();
@@ -10,9 +10,8 @@ $(document).ready(function () {
 
   //for each loop over the hour blocks
   $(".time-block").each(function () {
-    $(this).removeClass("past present future");
     //get the value from the html for the current hour block
-    let blockHour = parseInt($(this).attr("id").split("-")[1]);
+    let blockHour = parseInt($(this).attr("id").split("-")[0]);
     console.log(blockHour);
     //check and see if the currentHour > or < blockHour
     //add css styling to the text areas
@@ -24,7 +23,6 @@ $(document).ready(function () {
       $(this).addClass("past");
     }
   });
-
   $(".saveBtn").on("click", function () {
     //grab the user inputs that they put in
     var userTask = $(this).siblings(".description").val();
@@ -39,7 +37,7 @@ $(document).ready(function () {
   });
 
   //access the user's tasks after refresh
-  $("#hour-9 .description").val(JSON.parse(localStorage.getItem("hour-9")));
+  $("#hour-09 .description").val(JSON.parse(localStorage.getItem("hour-09")));
   $("#hour-10 .description").val(JSON.parse(localStorage.getItem("hour-10")));
   $("#hour-11 .description").val(JSON.parse(localStorage.getItem("hour-11")));
   $("#hour-12 .description").val(JSON.parse(localStorage.getItem("hour-12")));
